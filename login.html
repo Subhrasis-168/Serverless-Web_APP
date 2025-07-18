@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Global styles for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Hide scrollbars during animation */
+            animation: pageLoadAnimation 1.5s ease-out forwards; /* Full page load animation */
+        }
+
+        /* The login container style */
+        .login-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            opacity: 0; /* Initially hidden */
+            animation: fadeInUp 1.5s ease-out 1.5s forwards; /* Container fade-in animation */
+        }
+
+        h2 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.05); /* Button hover animation */
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            display: none;
+            animation: fadeInUp 1s ease-out; /* Error message animation */
+        }
+
+        /* Keyframe animations */
+        @keyframes pageLoadAnimation {
+            from {
+                transform: scale(0.9); /* Start from smaller scale */
+                opacity: 0;
+            }
+            to {
+                transform: scale(1); /* End with normal scale */
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+
+        <input type="submit" value="Login" id="loginButton">
+        <p class="error-message" id="errorMessage">Invalid credentials. Please try again.</p>
+    </div>
+
+    <script>
+        document.getElementById("loginButton").addEventListener("click", function() {
+            // Hardcoded credentials (in real use, check with a server)
+            const validUsername = "admin";
+            const validPassword = "password123";
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === validUsername && password === validPassword) {
+                // Redirect to the student management page
+                window.location.href = "index.html";
+            } else {
+                // Show error message with fade-in animation
+                document.getElementById("errorMessage").style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
